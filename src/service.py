@@ -29,7 +29,7 @@ class SpamModel:
             f"./dataset/spam.csv",
             encoding="utf-8",
             encoding_errors="replace"
-        )
+        )[1002:]
         self.DF = self.DF[["v1", "v2"]]
 
     @staticmethod
@@ -79,7 +79,6 @@ class SpamModel:
             raise NotFitted("Данные не загружены.")
 
         x, y = self.prepare_data(test_df)
-        print(x)
         return self.pipeline.predict(x)
 
     def __str__(self):
